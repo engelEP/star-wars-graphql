@@ -1,0 +1,25 @@
+.SearchBar {
+  margin: 40px auto;
+  max-width: 1440px;
+  padding: 15px;
+  width: 100%;
+
+  &-input {
+    background-color: $black;
+    border-radius: 2rem;
+    border: 1px solid $yellow;
+    color: $yellow;
+    font-size: 18px;
+    padding: 10px;
+
+    &:focus {
+      background-color: $black;
+      border: 1px solid $white;
+      color: $yellow;
+    }
+
+    &::placeholder {
+      color: $yellow;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.Header {
+  align-items: center;
+  background-color: $black;
+  display: flex;
+  gap: 15px;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  &-logo {
+    height: 100%;
+    max-width: 150px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &-nav {
+    max-width: 540px;
+    width: 100%;
+
+    &-list {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+    }
+
+    &-item {
+      color: $white;
+      font-size: 20px;
+      text-decoration: none;
+      transition: all 0.22s ease-in-out;
+      text-transform: capitalize;
+
+      &:hover {
+        color: $yellow;
+      }
+    }
+  }
+}
