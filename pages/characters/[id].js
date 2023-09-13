@@ -84,13 +84,17 @@ const Character = () => {
     );
   };
 
+  return renderCharacter();
+};
+
+Character.getLayout = function getLayout(page) {
   return (
     <Layout
-      title="Films"
+      title="Character"
       image={urlImg.imgHero}
       description={infoPages.charactersDescription}
     >
-      {renderCharacter()}
+      {page}
     </Layout>
   );
 };

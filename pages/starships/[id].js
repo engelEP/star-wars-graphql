@@ -83,13 +83,17 @@ const Starship = () => {
     );
   };
 
+  return renderStarships();
+};
+
+Starship.getLayout = function getLayout(page) {
   return (
     <Layout
       title="Starship"
       image={urlImg.imgHero}
       description={infoPages.starshipDescription}
     >
-      {renderStarships()}
+      {page}
     </Layout>
   );
 };

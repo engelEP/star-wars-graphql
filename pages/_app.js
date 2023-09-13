@@ -1,7 +1,7 @@
-import store from '@/redux';
 import '@/styles/globals.css';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { Provider } from 'react-redux';
+import store from '@/redux';
 
 export default function App({ Component, pageProps }) {
   const client = new ApolloClient({
@@ -9,10 +9,12 @@ export default function App({ Component, pageProps }) {
     cache: new InMemoryCache(),
   });
 
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </ApolloProvider>
     </Provider>
   );

@@ -85,13 +85,17 @@ const Film = () => {
     );
   };
 
+  return renderFilm();
+};
+
+Film.getLayout = function getLayout(page) {
   return (
     <Layout
-      title="Films"
+      title="Film"
       image={urlImg.imgHero}
       description={infoPages.filmsDescription}
     >
-      {renderFilm()}
+      {page}
     </Layout>
   );
 };

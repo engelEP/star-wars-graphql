@@ -30,23 +30,29 @@ const Characters = () => {
   };
 
   return (
+    <section className="PageContainer">
+      <SearchBar onSubmit={handlerChangeText} />
+      <List
+        dataLength={list.length}
+        next={handlerRefetch}
+        totalCount={totalCount}
+        searchText={searchText}
+        urlPage={urlPages.urlCharacters}
+        list={list}
+        actionButton={actionCharacters.add}
+      />
+    </section>
+  );
+};
+
+Characters.getLayout = function getLayout(page) {
+  return (
     <Layout
-      title="Films"
+      title="Characters"
       image={urlImg.imgHero}
       description={infoPages.charactersDescription}
     >
-      <section className="PageContainer">
-        <SearchBar onSubmit={handlerChangeText} />
-        <List
-          dataLength={list.length}
-          next={handlerRefetch}
-          totalCount={totalCount}
-          searchText={searchText}
-          urlPage={urlPages.urlCharacters}
-          list={list}
-          actionButton={actionCharacters.add}
-        />
-      </section>
+      {page}
     </Layout>
   );
 };

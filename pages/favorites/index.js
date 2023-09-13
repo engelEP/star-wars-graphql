@@ -18,55 +18,61 @@ const Favorites = () => {
   const starships = useSelector((store) => store.starships);
 
   return (
+    <div className="Home-container">
+      <Tabs
+        defaultActiveKey="films"
+        id="uncontrolled-tab-example"
+        className="mb-3"
+      >
+        <Tab eventKey="films" title="Films">
+          <TabList
+            query={getAllFilms}
+            image={urlImg.imgTab1}
+            altImage="image-films"
+            href={urlPages.urlFilms}
+            containerId="containerFilms"
+            actionButton={actionFilms.delete}
+            isFavoritePage
+            storeFavorites={films}
+          />
+        </Tab>
+        <Tab eventKey="characters" title="Characters">
+          <TabList
+            query={getAllCharacters}
+            image={urlImg.imgTab2}
+            altImage="image-characters"
+            href={urlPages.urlCharacters}
+            containerId="containerCharacters"
+            actionButton={actionCharacters.delete}
+            isFavoritePage
+            storeFavorites={characters}
+          />
+        </Tab>
+        <Tab eventKey="contact" title="Starship">
+          <TabList
+            query={getAllStarship}
+            image={urlImg.imgTab3}
+            altImage="image-starships"
+            href={urlPages.urlStarship}
+            containerId="containerStarship"
+            actionButton={actionStarahips.delete}
+            isFavoritePage
+            storeFavorites={starships}
+          />
+        </Tab>
+      </Tabs>
+    </div>
+  );
+};
+
+Favorites.getLayout = function getLayout(page) {
+  return (
     <Layout
       image={urlImg.imgHero}
-      title="favorites"
+      title="Favorites"
       description={infoPages.favoriteDescription}
     >
-      <div className="Home-container">
-        <Tabs
-          defaultActiveKey="films"
-          id="uncontrolled-tab-example"
-          className="mb-3"
-        >
-          <Tab eventKey="films" title="Films">
-            <TabList
-              query={getAllFilms}
-              image={urlImg.imgTab1}
-              altImage="image-films"
-              href={urlPages.urlFilms}
-              containerId="containerFilms"
-              actionButton={actionFilms.delete}
-              isFavoritePage
-              storeFavorites={films}
-            />
-          </Tab>
-          <Tab eventKey="characters" title="Characters">
-            <TabList
-              query={getAllCharacters}
-              image={urlImg.imgTab2}
-              altImage="image-characters"
-              href={urlPages.urlCharacters}
-              containerId="containerCharacters"
-              actionButton={actionCharacters.delete}
-              isFavoritePage
-              storeFavorites={characters}
-            />
-          </Tab>
-          <Tab eventKey="contact" title="Starship">
-            <TabList
-              query={getAllStarship}
-              image={urlImg.imgTab3}
-              altImage="image-starships"
-              href={urlPages.urlStarship}
-              containerId="containerStarship"
-              actionButton={actionStarahips.delete}
-              isFavoritePage
-              storeFavorites={starships}
-            />
-          </Tab>
-        </Tabs>
-      </div>
+      {page}
     </Layout>
   );
 };

@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 import SearchBar from '@/components/SearchBar';
-import ListItem from '@/components/ListItem';
 import Layout from '@/components/Layout';
 import { getAllStarship } from '@/graphql/starship';
 import { urlImg, infoPages } from '@/constants/infoPages';
@@ -32,23 +31,29 @@ const Starships = () => {
   };
 
   return (
+    <section className="PageContainer">
+      <SearchBar onSubmit={handlerChangeText} />
+      <List
+        dataLength={list.length}
+        next={handlerRefetch}
+        totalCount={totalCount}
+        searchText={searchText}
+        urlPage={urlPages.urlStarship}
+        list={list}
+        actionButton={actionStarahips.add}
+      />
+    </section>
+  );
+};
+
+Starships.getLayout = function getLayout(page) {
+  return (
     <Layout
       title="Starships"
       image={urlImg.imgHero}
       description={infoPages.starshipDescription}
     >
-      <section className="PageContainer">
-        <SearchBar onSubmit={handlerChangeText} />
-        <List
-          dataLength={list.length}
-          next={handlerRefetch}
-          totalCount={totalCount}
-          searchText={searchText}
-          urlPage={urlPages.urlStarship}
-          list={list}
-          actionButton={actionStarahips.add}
-        />
-      </section>
+      {page}
     </Layout>
   );
 };

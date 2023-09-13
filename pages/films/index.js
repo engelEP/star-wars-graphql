@@ -32,23 +32,29 @@ const Films = () => {
   };
 
   return (
+    <section className="PageContainer">
+      <SearchBar onSubmit={handlerChangeText} />
+      <List
+        dataLength={list.length}
+        next={handlerRefetch}
+        totalCount={totalCount}
+        searchText={searchText}
+        urlPage={urlPages.urlFilms}
+        list={list}
+        actionButton={actionFilms.add}
+      />
+    </section>
+  );
+};
+
+Films.getLayout = function getLayout(page) {
+  return (
     <Layout
       title="Films"
       image={urlImg.imgHero}
       description={infoPages.filmsDescription}
     >
-      <section className="PageContainer">
-        <SearchBar onSubmit={handlerChangeText} />
-        <List
-          dataLength={list.length}
-          next={handlerRefetch}
-          totalCount={totalCount}
-          searchText={searchText}
-          urlPage={urlPages.urlFilms}
-          list={list}
-          actionButton={actionFilms.add}
-        />
-      </section>
+      {page}
     </Layout>
   );
 };
